@@ -36,4 +36,5 @@ void counting_sort(int *array, size_t size)
 			j++;
 		}
 	}
+	free(c_array);
 }
