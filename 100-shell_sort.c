@@ -11,6 +11,8 @@ void shell_sort(int *array, size_t size)
 	int gap = 1, i, j, temp;
 	int dummy = *array;
 
+	if (size <= 1)
+		return;
 	while (gap < (int)size)
 		gap = gap * 3 + 1;
 	while (gap)

@@ -70,5 +70,7 @@ void sorter(int *array, int low, int high, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
+	if (size <= 1)
+		return;
 	sorter(array, 0, size - 1, size);
 }
