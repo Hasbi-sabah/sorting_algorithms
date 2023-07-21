@@ -43,8 +43,6 @@ void cocktail_sort_list(listint_t **list)
 		size++;
 		node = node->next;
 	}
-	if (size <= 1)
-		return;
 	node = *list;
 	while (sorted)
 	{
@@ -72,4 +70,5 @@ void cocktail_sort_list(listint_t **list)
 		start++;
 		node = node->next;
 	}
+	print_list(*list);
 }
