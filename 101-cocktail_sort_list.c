@@ -11,7 +11,7 @@ int swap_list(listint_t *n1, listint_t *n2, listint_t **list)
 {
 	int sorted = 0;
 
-	if (n1->n >= n2->n)
+	if (n1->n > n2->n)
 	{
 		n1->next = n2->next;
 		if (n2->next != NULL)
@@ -60,6 +60,7 @@ void cocktail_sort_list(listint_t **list)
 			break;
 		size--;
 		node = node->prev;
+		sorted = 0;
 		for (i = size; i > start; i--)
 		{
 			if (swap_list(node->prev, node, list))
