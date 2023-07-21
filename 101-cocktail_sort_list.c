@@ -30,7 +30,7 @@ void cocktail_sort_list(listint_t **list)
 	int sorted = 0;
 	listint_t *node, *tail;
 
-	if (!*list || !(*list)->next)
+	if (!list || !*list || !(*list)->next)
 		return;
 	while (!sorted)
 	{
