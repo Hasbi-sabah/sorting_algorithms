@@ -70,5 +70,4 @@ void cocktail_sort_list(listint_t **list)
 		start++;
 		node = node->next;
 	}
-	print_list(*list);
 }
