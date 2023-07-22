@@ -93,6 +93,6 @@ void bubble_sort_deck(deck_node_t **deck, int cmp)
  */
 void sort_deck(deck_node_t **deck)
 {
-	cocktail_sort_deck(deck, 0);
-	cocktail_sort_deck(deck, 1);
+	bubble_sort_deck(deck, 0);
+	bubble_sort_deck(deck, 1);
 }
