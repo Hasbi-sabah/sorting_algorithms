@@ -1,17 +1,4 @@
 #include "sort.h"
-/**
- * swapper - swaps 2 pointers
- * @x: pointer 1
- * @y: pointer 2
- */
-void swapper(int *x, int *y)
-{
-	int temp;
-
-	temp = *x;
-	*x = *y;
-	*y = temp;
-}
 
 /**
  * partitionner - partitions the array using lomutos method
@@ -23,41 +10,54 @@ void swapper(int *x, int *y)
  */
 int partitionner(int *array, int low, int high, size_t size)
 {
-	int *pivot = array + high;
+	int pivot = array[high], temp;
 	int i = low - 1;
-    	int j = high + 1;
+	int j = high + 1;
 
 	while (1)
 	{
 		do {
 			i++;
-		} while (array[i] < *pivot);
+		} while (array[i] < pivot);
 		do {
 			j--;
-		} while (array[j] > *pivot);
-		if (i >= j)
+		} while (array[j] > pivot);
+		if (i > j)
 			return (j);
-		swapper(array + i, array + j);
-		print_array(array, size);
+		if (array[i] > array[j])
+		{
+			temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+			print_array(array, size);
+		}
 	}
 }
+
 /**
- * sorter - recusrsive function
+ * splitter - recusrsive function
  * @array: array to be sorted
  * @low: the low index
  * @high: the high index
+ * @size: size of the array
  */
 void splitter(int *array, int low, int high, int size)
 {
 	int p_idx;
 
-	if (low >= high)
-		return;
-	p_idx = partitionner(array, low, high, size);
-	splitter(array, low, p_idx - 1, size);
-	splitter(array, p_idx + 1, high, size);
-
+	if (low < high)
+	{
+		p_idx = partitionner(array, low, high, size);
+		splitter(array, low, p_idx, size);
+		splitter(array, p_idx + 1, high, size);
+	}
 }
+/**
+ * quick_sort_hoare - sorts an array of integers in ascending order
+ * using the Quick sort algorithm
+ * @array: array to be sorted
+ * @size: size of the array
+ */
 void quick_sort_hoare(int *array, size_t size)
 {
 	if (size <= 1)
