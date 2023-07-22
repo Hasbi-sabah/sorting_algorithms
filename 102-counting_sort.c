@@ -11,6 +11,8 @@ void counting_sort(int *array, size_t size)
 	int max = 0, i, n;
 	int *a, *count = malloc(sizeof(int) * size);
 
+	if (size >= 1)
+		return;
 	for (s = 0; s < size; s++)
 	{
 		if (array[s] > max)
