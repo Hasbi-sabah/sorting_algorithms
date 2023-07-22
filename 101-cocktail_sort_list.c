@@ -9,7 +9,7 @@
 */
 int swap_list(listint_t *n1, listint_t *n2, listint_t **list)
 {
-	int sorted = 0;
+	int swapped = 0;
 
 	if (n1->n > n2->n)
 	{
@@ -24,9 +24,9 @@ int swap_list(listint_t *n1, listint_t *n2, listint_t **list)
 		else
 			*list = n2;
 		print_list(*list);
-		sorted = 1;
+		swapped = 1;
 	}
-	return (sorted);
+	return (swapped);
 }
 
 /**
@@ -35,42 +35,27 @@ int swap_list(listint_t *n1, listint_t *n2, listint_t **list)
 */
 void cocktail_sort_list(listint_t **list)
 {
-	int sorted = 1, size = -1, start = 0, i;
-	listint_t *node = *list;
+	int swapped = 0;
+	listint_t *node = *list, *tail = *list;
 
 	if (!list || !*list || !(*list)->next)
 		return;
-	while (node)
+
+	while (!swapped)
 	{
-		size++;
-		node = node->next;
-	}
-	node = *list;
-	while (sorted)
-	{
-		sorted = 0;
-		for (i = start; i < size; i++)
-		{
-			if (swap_list(node, node->next, list))
-				sorted = 1;
-			else
-				node = node->next;
-		}
-		if (!sorted)
-			break;
-		size--;
-		node = node->prev;
-		sorted = 0;
-		for (i = size; i > start; i--)
+		swapped = 1;
+		for (node = (*list)->next; node; node = node->next)
 		{
 			if (swap_list(node->prev, node, list))
-			{
-				sorted = 1;
-			}
-			else
-				node = node->prev;
+				swapped = 0;
+			tail = node->prev;
 		}
-		start++;
-		node = node->next;
+		if (swapped)
+			break;
+		for (node = tail->prev; node; node = node->prev)
+		{
+			if (swap_list(node, node->next, list))
+				swapped = 0;
+		}
 	}
 }
