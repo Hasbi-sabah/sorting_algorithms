@@ -22,7 +22,7 @@ int partitionner(int *array, int low, int high, size_t size)
 		do {
 			j--;
 		} while (array[j] > pivot);
-		if (i >= j)
+		if (i > j)
 			return (j);
 		if (array[i] > array[j])
 		{
