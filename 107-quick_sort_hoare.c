@@ -14,7 +14,7 @@ int partitionner(int *array, int low, int high, size_t size)
 	int i = low - 1;
 	int j = high + 1;
 
-	while (1)
+	while (i < j)
 	{
 		do {
 			i++;
@@ -22,9 +22,7 @@ int partitionner(int *array, int low, int high, size_t size)
 		do {
 			j--;
 		} while (array[j] > pivot);
-		if (i > j)
-			return (j);
-		if (array[i] > array[j])
+		if (i < j)
 		{
 			temp = array[i];
 			array[i] = array[j];
@@ -32,6 +30,7 @@ int partitionner(int *array, int low, int high, size_t size)
 			print_array(array, size);
 		}
 	}
+	return (j);
 }
 
 /**
