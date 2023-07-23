@@ -33,7 +33,6 @@ void count_sort(int *array, size_t size, int digit)
 	{
 		array[i] = a[i];
 	}
-	print_array(array, size);
 	free(a);
 	free(count);
 }
@@ -57,5 +56,6 @@ void radix_sort(int *array, size_t size)
 	for (i = 1; (max / i) > 0; i *= 10)
 	{
 		count_sort(array, size, i);
+		print_array(array, size);
 	}
 }
