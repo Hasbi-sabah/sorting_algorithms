@@ -30,7 +30,7 @@ int partitionner(int *array, int low, int high, size_t size)
 			print_array(array, size);
 		}
 	}
-	return (j);
+	return (i);
 }
 
 /**
@@ -47,8 +47,8 @@ void splitter(int *array, int low, int high, size_t size)
 	if (low < high)
 	{
 		p_idx = partitionner(array, low, high, size);
-		splitter(array, low, p_idx, size);
-		splitter(array, p_idx + 1, high, size);
+		splitter(array, low, p_idx - 1, size);
+		splitter(array, p_idx, high, size);
 	}
 }
 /**
