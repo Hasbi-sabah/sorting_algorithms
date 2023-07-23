@@ -44,7 +44,7 @@ void count_sort(int *array, size_t size, int digit)
  */
 void radix_sort(int *array, size_t size)
 {
-	int max = array[0], i;
+	int max = array[0], i, base = 1;
 	size_t s;
 
 	if (size <= 1)
@@ -54,7 +54,11 @@ void radix_sort(int *array, size_t size)
 		if (array[s] > max)
 			max = array[s];
 	}
-	for (i = 1; (max / i) > 0; i *= 10)
+	while (max / base > 10)
+	{
+		base *= 10;
+	}
+	for (i = 1; (base / i) > 0; i *= 10)
 	{
 		count_sort(array, size, i);
 	}
