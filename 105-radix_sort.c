@@ -43,12 +43,12 @@ void count_sort(int *array, size_t size, int digit)
  */
 void radix_sort(int *array, size_t size)
 {
-	int max = array[0], i;
+	int max = 0, i;
 	size_t s;
 
 	if (size <= 1 || array == NULL)
 		return;
-	for (s = 1; s < size; s++)
+	for (s = 0; s < size; s++)
 	{
 		if (array[s] > max)
 			max = array[s];
