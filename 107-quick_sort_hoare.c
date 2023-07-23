@@ -41,7 +41,7 @@ int partitionner(int *array, int low, int high, size_t size)
  * @high: the high index
  * @size: size of the array
  */
-void splitter(int *array, int low, int high, int size)
+void splitter(int *array, int low, int high, size_t size)
 {
 	int p_idx;
 
@@ -60,7 +60,7 @@ void splitter(int *array, int low, int high, int size)
  */
 void quick_sort_hoare(int *array, size_t size)
 {
-	if (size <= 1)
+	if (!array || size <= 1)
 		return;
 	splitter(array, 0, size - 1, size);
 }
