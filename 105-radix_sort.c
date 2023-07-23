@@ -5,13 +5,14 @@
  * @array: the list to be sorted
  * @size: size of the array
  * @digit: no of significant digit
+ * Return: 0, 1
 */
-void count_sort(int *array, size_t size, int digit)
+int count_sort(int *array, size_t size, int digit)
 {
 	int i, *a = malloc(sizeof(int) * size), *count = malloc(sizeof(int) * 10);
 
 	if (a == NULL || count == NULL)
-		return;
+		return (1);
 	for (i = 0; i < 10; i++)
 	{
 		count[i] = 0;
@@ -36,6 +37,7 @@ void count_sort(int *array, size_t size, int digit)
 	print_array(array, size);
 	free(a);
 	free(count);
+	return (0);
 }
 /**
  * radix_sort - sort an array using radix sort algorithm
@@ -44,22 +46,19 @@ void count_sort(int *array, size_t size, int digit)
  */
 void radix_sort(int *array, size_t size)
 {
-	int max = array[0], i, base = 1;
+	int max = array[0], i;
 	size_t s;
 
-	if (size <= 1)
+	if (size <= 1 || array == NULL)
 		return;
 	for (s = 1; s < size; s++)
 	{
 		if (array[s] > max)
 			max = array[s];
 	}
-	while (max / base > 10)
+	for (i = 1; (max / i) > 0; i *= 10)
 	{
-		base *= 10;
-	}
-	for (i = 1; (base / i) > 0; i *= 10)
-	{
-		count_sort(array, size, i);
+		if (count_sort(array, size, i))
+			return;
 	}
 }
