@@ -9,8 +9,13 @@ void counting_sort(int *array, size_t size)
 {
 	size_t s;
 	int max = 0, i, n;
-	int *a, *count = malloc(sizeof(int) * size);
+	int *a, *count;
 
+	if (size <= 1)
+	{
+		return;
+	}
+	count = malloc(sizeof(int) * size);
 	for (s = 0; s < size; s++)
 	{
 		if (array[s] > max)

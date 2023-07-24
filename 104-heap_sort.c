@@ -16,9 +16,10 @@ void swap(int *n1, int *n2)
 
 /**
  * heap_max - function responsible for the sift down
- * @root: the index of the base row of the heap
+ * @base: the index of the base row of the heap
  * @ele: element of the array
  * @size: the array size
+ * @array: array to be sorted
 */
 void heap_max(int *array, size_t size, size_t base, size_t ele)
 {
